@@ -95,7 +95,7 @@ class ModifierBiblioActivity : AppCompatActivity() {
 
                     if (newNote.isNotEmpty()) {
                         db.collection("Bibliotheque").document(docId)
-                            .update("Note", newNote)
+                            .update("Note", Integer.getInteger(newNote))
                             .addOnSuccessListener {
                                 Log.d(TAG, "Note mise à jour: $newNote")
                                 modifButton.text = "Note: $newNote" // Mise à jour dans l'UI
