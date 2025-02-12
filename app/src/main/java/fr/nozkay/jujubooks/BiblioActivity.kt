@@ -23,6 +23,7 @@ class BiblioActivity : AppCompatActivity() {
         loadBooks()
 
         val Bookadd = findViewById<TextView>(R.id.buttonAdd)
+        val BookModif = findViewById<TextView>(R.id.buttonModifier)
         val accueilbutton = findViewById<LinearLayout>(R.id.layout_home)
         val bibliobutton = findViewById<LinearLayout>(R.id.layout_biblio)
         val listebutton = findViewById<LinearLayout>(R.id.layout_liste)
@@ -35,7 +36,13 @@ class BiblioActivity : AppCompatActivity() {
         }
 
         Bookadd.setOnClickListener{
-            val i = Intent(this, MainActivity::class.java)
+            val i = Intent(this, AddBookActivity::class.java)
+            startActivity(i)
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+        }
+
+        BookModif.setOnClickListener{
+            val i = Intent(this, ModifierBiblioActivity::class.java)
             startActivity(i)
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
         }

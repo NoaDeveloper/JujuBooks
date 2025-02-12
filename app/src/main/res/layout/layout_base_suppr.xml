@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="10dp"
+    android:background="@drawable/corners_vert">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_weight="0.7"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nom du livre"
+            android:id="@+id/nomlivre"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/formatlivre"
+            android:text="Format: Format du livre"
+            android:textColor="@color/vertfonce"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="10sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/datelecture"
+            android:text="Date de lecture: XX/XX/XXXX"
+            android:textColor="@color/vertfonce"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="10sp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="0.2"
+        android:gravity="center"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ButtonSuppr"
+            android:text="  Supprimer  "
+            android:textColor="@color/white"
+            android:background="@drawable/corners_red"
+            android:fontFamily="@font/poppins_bold"
+            android:layout_marginBottom="10dp"
+            android:textSize="16sp">
+        </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ButtonModifNote"
+            android:text="  Modifier note  "
+            android:textColor="@color/white"
+            android:background="@drawable/corners_fonce"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="16sp">
+        </TextView>
+    </LinearLayout>
+
+
+</LinearLayout>

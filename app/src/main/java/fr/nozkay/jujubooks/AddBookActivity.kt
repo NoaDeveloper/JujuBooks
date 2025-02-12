@@ -21,6 +21,7 @@ class AddBookActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_book)
 
+
         val accueilbutton = findViewById<LinearLayout>(R.id.layout_home)
         val bibliobutton = findViewById<LinearLayout>(R.id.layout_biblio)
         val listebutton = findViewById<LinearLayout>(R.id.layout_liste)
@@ -42,6 +43,13 @@ class AddBookActivity : AppCompatActivity() {
         val dateLivreAdd = findViewById<EditText>(R.id.dateLivreAdd)
         val noteLivreAdd = findViewById<EditText>(R.id.noteLivreAdd)
         val buttonAdd = findViewById<TextView>(R.id.buttonAdd)
+        val buttonModifier = findViewById<TextView>(R.id.buttonModifier)
+
+        buttonModifier.setOnClickListener{
+            val i = Intent(this, BiblioActivity::class.java)
+            startActivity(i)
+            overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out)
+        }
 
         buttonAdd.setOnClickListener {
             val nomLivre = nameLivreAdd.text.toString().trim()
