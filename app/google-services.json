@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "209891718213",
+    "project_id": "jujubooks-f5c0e",
+    "storage_bucket": "jujubooks-f5c0e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:209891718213:android:ba77584c537877ebdb9f2c",
+        "android_client_info": {
+          "package_name": "fr.nozkay.jujubooks"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEspoc6srXH2QeeeHR6PhEwYc2VW5MGoA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

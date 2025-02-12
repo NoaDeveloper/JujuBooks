@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/verteau"
+    android:orientation="vertical"
+    tools:context=".MainActivity" >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/namePage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins_bold"
+            android:text="BIBLIOTHEQUE"
+            android:textColor="@color/white"
+            android:textSize="28dp" />
+
+        <ImageView
+            android:id="@+id/logo_spashscreen"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/baseline_book_24"></ImageView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.5"
+        android:orientation="vertical"
+        android:layout_marginTop="30dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_margin="10dp"
+            android:orientation="vertical"
+            android:layout_weight="0.7">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ajout d'un nouveau livre:"
+                android:textSize="13sp"
+                android:gravity="center"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="@color/vertfonce">
+            </TextView>
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nom du livre"
+                android:textSize="15sp"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="@color/vertfonce">
+            </TextView>
+
+            <EditText
+                android:id="@+id/nameLivreAdd"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:ems="10"
+                android:inputType="text"
+                android:background="@drawable/corners_vert"/>
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Format du livre ( Poche, Broché ect )"
+                android:textSize="15sp"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="@color/vertfonce">
+            </TextView>
+
+            <EditText
+                android:id="@+id/formatLivreAdd"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:ems="10"
+                android:inputType="text"
+                android:background="@drawable/corners_vert"/>
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Date de lecture du livre ( mettre 0 si non lu | forme: JJ/MM/AA )"
+                android:textSize="15sp"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="@color/vertfonce">
+            </TextView>
+
+            <EditText
+                android:id="@+id/dateLivreAdd"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:ems="10"
+                android:inputType="text"
+                android:background="@drawable/corners_vert"/>
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Note du livre sur 20"
+                android:textSize="15sp"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="@color/vertfonce">
+            </TextView>
+
+            <EditText
+                android:id="@+id/noteLivreAdd"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:ems="10"
+                android:inputType="text"
+                android:background="@drawable/corners_vert"/>
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Erreur:"
+                android:visibility="gone"
+                android:textSize="15sp"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="#FF0000">
+            </TextView>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/buttonAdd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="17sp"
+            android:background="@drawable/corners_fonce"
+            android:text="Ajouter le livre" />
+
+        <TextView
+            android:id="@+id/buttonModifier"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="17sp"
+            android:background="@drawable/corners_fonce"
+            android:text="Annuler l'ajoue" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:background="@drawable/corners_vert">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:id="@+id/layout_home"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                app:srcCompat="@drawable/baseline_home_filled_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-10dp"
+                android:text="Accueil"
+                android:textColor="@color/white"
+                android:textSize="15dp"
+                android:fontFamily="@font/poppins_bold">
+
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/layout_biblio"
+            android:layout_marginLeft="20dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                app:srcCompat="@drawable/baseline_collections_bookmark_vert" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-10dp"
+                android:text="Bibliothèque"
+                android:textColor="@color/vertfonce"
+                android:textSize="15dp"
+                android:fontFamily="@font/poppins_bold">
+
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/layout_liste"
+            android:layout_marginLeft="20dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                app:srcCompat="@drawable/baseline_grade_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-10dp"
+                android:text="Ma Liste"
+                android:textColor="@color/white"
+                android:textSize="15dp"
+                android:fontFamily="@font/poppins_bold">
+
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/layout_stats"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="20dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                app:srcCompat="@drawable/baseline_auto_graph_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-10dp"
+                android:text="Stats"
+                android:textColor="@color/white"
+                android:textSize="15dp"
+                android:fontFamily="@font/poppins_bold">
+
+            </TextView>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
