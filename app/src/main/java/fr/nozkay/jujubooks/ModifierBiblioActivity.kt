@@ -104,11 +104,11 @@ class ModifierBiblioActivity : AppCompatActivity() {
                 .setMessage("Entrez la nouvelle note pour ce livre :")
                 .setView(editText)
                 .setPositiveButton("Valider") { _, _ ->
-                    val newNote = editText.text.toString().trim()
+                    val newNote = editText.text.toString().trim().toIntOrNull()
 
-                    if (newNote.isNotEmpty()) {
+                    if (newNote != null) {
                         db.collection("Bibliotheque").document(docId)
-                            .update("Note", Integer.getInteger(newNote))
+                            .update("Note", newNote)
                             .addOnSuccessListener {
                                 Log.d(TAG, "Note mise à jour: $newNote")
                                 modifButton.text = "Note: $newNote" // Mise à jour dans l'UI
