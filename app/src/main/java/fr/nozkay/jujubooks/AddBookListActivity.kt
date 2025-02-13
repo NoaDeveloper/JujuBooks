@@ -13,13 +13,13 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.firestore.FirebaseFirestore
 
-class AddBookActivity : AppCompatActivity() {
+class AddBookListActivity : AppCompatActivity() {
     private val db = FirebaseFirestore.getInstance()
     private val TAG = "AjoutLivre"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_book)
+        setContentView(R.layout.activity_add_book_list)
 
 
         val accueilbutton = findViewById<LinearLayout>(R.id.layout_home)
@@ -59,7 +59,7 @@ class AddBookActivity : AppCompatActivity() {
         val buttonModifier = findViewById<TextView>(R.id.buttonModifier)
 
         buttonModifier.setOnClickListener{
-            val i = Intent(this, BiblioActivity::class.java)
+            val i = Intent(this, ListeActivity::class.java)
             startActivity(i)
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out)
         }
@@ -68,25 +68,20 @@ class AddBookActivity : AppCompatActivity() {
             val nomLivre = nameLivreAdd.text.toString().trim()
             val formatLivre = formatLivreAdd.text.toString().trim()
             val dateLecture = dateLivreAdd.text.toString().trim()
-            val noteLivreStr = noteLivreAdd.text.toString().trim()
+            val prixLivreStr = noteLivreAdd.text.toString().trim()
 
             // Vérification si aucun champ n'est vide
-            if (nomLivre.isEmpty() || formatLivre.isEmpty() || dateLecture.isEmpty() || noteLivreStr.isEmpty()) {
+            if (nomLivre.isEmpty() || formatLivre.isEmpty() || dateLecture.isEmpty() || prixLivreStr.isEmpty()) {
                 showToast("Tous les champs doivent être remplis.")
                 return@setOnClickListener
             }
 
-            // Vérification si la note est un nombre valide et inférieur à 20
-            val noteLivre = noteLivreStr.toIntOrNull()
-            if (noteLivre == null || noteLivre !in 0..20) {
-                showToast("La note doit être un nombre entre 0 et 20.")
-                return@setOnClickListener
-            }
+            val prixLivre = prixLivreStr
 
             // Vérification du format de la date de lecture
             val dateRegex = Regex("""^\d{2}/\d{2}/(\d{2}|\d{4})$""")
             val dateFinale = when {
-                dateLecture == "0" -> "Non lue" // Si 0, on enregistre une valeur vide
+                dateLecture == "0" -> "Déjà sortie" // Si 0, on enregistre une valeur vide
                 dateLecture.matches(dateRegex) -> dateLecture // Si format valide, on garde
                 else -> {
                     showToast("Format de date invalide. Utilisez JJ/MM/AA ou JJ/MM/AAAA.")
@@ -99,15 +94,15 @@ class AddBookActivity : AppCompatActivity() {
                 "Nom" to nomLivre,
                 "Format" to formatLivre,
                 "Date" to dateFinale,
-                "Note" to noteLivre
+                "Prix" to prixLivre
             )
 
             // Ajout à Firestore
-            db.collection("Bibliotheque")
+            db.collection("Liste")
                 .add(nouveauLivre)
                 .addOnSuccessListener {
                     showToast("Livre ajouté avec succès !")
-                    val i = Intent(this, BiblioActivity::class.java)
+                    val i = Intent(this, ListeActivity::class.java)
                     startActivity(i)
                     overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out)
                 }

@@ -29,8 +29,26 @@ class MainActivity : AppCompatActivity() {
         val listebutton = findViewById<LinearLayout>(R.id.layout_liste)
         val statsbutton = findViewById<LinearLayout>(R.id.layout_stats)
 
+        accueilbutton.setOnClickListener{
+            val i = Intent(this, MainActivity::class.java)
+            startActivity(i)
+            overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out)
+        }
+
         bibliobutton.setOnClickListener{
             val i = Intent(this, BiblioActivity::class.java)
+            startActivity(i)
+            overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out)
+        }
+
+        listebutton.setOnClickListener{
+            val i = Intent(this, ListeActivity::class.java)
+            startActivity(i)
+            overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out)
+        }
+
+        statsbutton.setOnClickListener{
+            val i = Intent(this, StatActivity::class.java)
             startActivity(i)
             overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out)
         }

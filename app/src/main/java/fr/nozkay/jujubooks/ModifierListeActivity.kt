@@ -15,13 +15,13 @@ import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 
-class ModifierBiblioActivity : AppCompatActivity() {
+class ModifierListeActivity : AppCompatActivity() {
     private val db = FirebaseFirestore.getInstance()
     private val TAG = "BDDJujuBook"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_modifier_biblio)
+        setContentView(R.layout.activity_modifier_liste)
 
         loadBooks()
 
@@ -32,11 +32,10 @@ class ModifierBiblioActivity : AppCompatActivity() {
         val statsbutton = findViewById<LinearLayout>(R.id.layout_stats)
 
         confirmbutton.setOnClickListener{
-            val i = Intent(this, BiblioActivity::class.java)
+            val i = Intent(this, ListeActivity::class.java)
             startActivity(i)
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
         }
-
 
         accueilbutton.setOnClickListener{
             val i = Intent(this, MainActivity::class.java)
@@ -64,7 +63,7 @@ class ModifierBiblioActivity : AppCompatActivity() {
     }
 
     private fun loadBooks() {
-        db.collection("Bibliotheque")
+        db.collection("Liste")
             .get()
             .addOnSuccessListener { result ->
                 val documents = result.documents
@@ -86,7 +85,7 @@ class ModifierBiblioActivity : AppCompatActivity() {
 
     private fun addBookToLayout(container: LinearLayout, doc: DocumentSnapshot, index: Int) {
         val inflater = LayoutInflater.from(this)
-        val bookView = inflater.inflate(R.layout.layout_base_suppr, container, false)
+        val bookView = inflater.inflate(R.layout.layout_base_suppr_liste, container, false)
 
         val nomLivre = bookView.findViewById<TextView>(R.id.nomlivre)
         val formatLivre = bookView.findViewById<TextView>(R.id.formatlivre)
@@ -97,21 +96,21 @@ class ModifierBiblioActivity : AppCompatActivity() {
         modifButton.setOnClickListener{
             val docId = doc.id
             val editText = android.widget.EditText(this)
-            editText.hint = "Entrez la nouvelle note"
+            editText.hint = "Entrez le nouveau prix"
 
             val alertDialog = AlertDialog.Builder(this)
-                .setTitle("Modifier la note")
-                .setMessage("Entrez la nouvelle note pour ce livre :")
+                .setTitle("Modifier le prix")
+                .setMessage("Entrez le nouveau prix pour ce livre :")
                 .setView(editText)
                 .setPositiveButton("Valider") { _, _ ->
                     val newNote = editText.text.toString().trim()
 
                     if (newNote.isNotEmpty()) {
-                        db.collection("Bibliotheque").document(docId)
-                            .update("Note", Integer.getInteger(newNote))
+                        db.collection("Liste").document(docId)
+                            .update("Prix", newNote)
                             .addOnSuccessListener {
                                 Log.d(TAG, "Note mise à jour: $newNote")
-                                modifButton.text = "Note: $newNote" // Mise à jour dans l'UI
+                                modifButton.text = "Prix: $newNote" // Mise à jour dans l'UI
                             }
                             .addOnFailureListener { e ->
                                 Log.e(TAG, "Erreur lors de la mise à jour", e)
@@ -132,7 +131,7 @@ class ModifierBiblioActivity : AppCompatActivity() {
                 .setTitle("Confirmation")
                 .setMessage("Êtes-vous sûr de vouloir supprimer cet élément ?")
                 .setPositiveButton("Oui") { _, _ ->
-                    db.collection("Bibliotheque").document(docId)
+                    db.collection("Liste").document(docId)
                         .delete()
                         .addOnSuccessListener {
                             Log.d(TAG, "Livre supprimé: $docId")
@@ -143,13 +142,13 @@ class ModifierBiblioActivity : AppCompatActivity() {
                         }
                 }.setNegativeButton("Annuler", null).create()
 
-                alertDialog.show()
+            alertDialog.show()
 
         }
 
         nomLivre.text = doc.getString("Nom") ?: "Inconnu"
         formatLivre.text = "Format: ${doc.getString("Format") ?: "Non spécifié"}"
-        dateLecture.text = "Date de lecture: ${doc.getString("Date") ?: "Non spécifiée"}"
+        dateLecture.text = "Date de sortie: ${doc.getString("Date") ?: "Non spécifiée"}"
 
         // Ajouter une marge de 10dp sauf pour le premier élément
         val layoutParams = LinearLayout.LayoutParams(

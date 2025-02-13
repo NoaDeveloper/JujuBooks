@@ -13,6 +13,21 @@
         android:theme="@style/Theme.JujuBooks"
         tools:targetApi="31">
         <activity
+            android:name=".StatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StatsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ModifierListeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddBookListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ListeActivity"
+            android:exported="false" />
+        <activity
             android:name=".ModifierBiblioActivity"
             android:exported="false" />
         <activity
